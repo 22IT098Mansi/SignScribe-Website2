@@ -1,8 +1,21 @@
+
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Session, User } from '@supabase/supabase-js';
-import { supabase } from '@/lib/supabase';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
+
+// Define our own User and Session types (previously from Supabase)
+export type User = {
+  id: string;
+  email: string;
+  user_metadata?: {
+    full_name?: string;
+    avatar_url?: string;
+  };
+};
+
+export type Session = {
+  user: User;
+};
 
 type AuthContextType = {
   session: Session | null;
@@ -12,53 +25,76 @@ type AuthContextType = {
   signUp: (email: string, password: string, name: string) => Promise<void>;
   signOut: () => Promise<void>;
   signInWithGoogle: () => Promise<void>;
+  signInWithGithub: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Helper to store auth state in localStorage
+const saveToStorage = (key: string, value: any) => {
+  localStorage.setItem(key, JSON.stringify(value));
+};
+
+const getFromStorage = (key: string) => {
+  const item = localStorage.getItem(key);
+  if (item) {
+    try {
+      return JSON.parse(item);
+    } catch (e) {
+      return null;
+    }
+  }
+  return null;
+};
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [session, setSession] = useState<Session | null>(null);
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [session, setSession] = useState<Session | null>(getFromStorage('session'));
+  const [user, setUser] = useState<User | null>(session?.user || null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  // Ensure auth state is synchronized with localStorage
   useEffect(() => {
-    const getSession = async () => {
-      const { data, error } = await supabase.auth.getSession();
-      
-      if (error) {
-        console.error('Error getting session:', error);
-        setLoading(false);
-        return;
-      }
-      
-      setSession(data.session);
-      setUser(data.session?.user ?? null);
-      setLoading(false);
-    };
-
-    getSession();
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      setLoading(false);
-    });
-
-    return () => {
-      subscription.unsubscribe();
-    };
+    const storedSession = getFromStorage('session');
+    if (storedSession) {
+      setSession(storedSession);
+      setUser(storedSession.user);
+    }
   }, []);
+
+  const createMockSession = (email: string, name?: string) => {
+    const newUser: User = {
+      id: Math.random().toString(36).substring(2, 15),
+      email,
+      user_metadata: {
+        full_name: name || email.split('@')[0],
+        avatar_url: '',
+      }
+    };
+    
+    const newSession: Session = {
+      user: newUser
+    };
+    
+    setSession(newSession);
+    setUser(newUser);
+    saveToStorage('session', newSession);
+  };
 
   const signIn = async (email: string, password: string) => {
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signInWithPassword({ email, password });
       
-      if (error) {
-        toast.error(error.message);
+      // Mock authentication - accept any valid email and password
+      if (!email.includes('@') || password.length < 6) {
+        toast.error('Invalid email or password');
         return;
       }
+      
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      createMockSession(email);
       
       toast.success('Signed in successfully');
       navigate('/learn');
@@ -73,22 +109,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signUp = async (email: string, password: string, name: string) => {
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signUp({ 
-        email, 
-        password,
-        options: {
-          data: {
-            full_name: name,
-          }
-        }
-      });
       
-      if (error) {
-        toast.error(error.message);
+      // Mock signup - accept any valid email and password
+      if (!email.includes('@') || password.length < 6) {
+        toast.error('Invalid email or password');
         return;
       }
       
-      toast.success('Check your email for the confirmation link');
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      toast.success('Account created successfully');
       navigate('/signin');
     } catch (error) {
       toast.error('An error occurred during sign up');
@@ -101,17 +132,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const signInWithGoogle = async () => {
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: `${window.location.origin}/learn`,
-        },
-      });
       
-      if (error) {
-        toast.error(error.message);
-        return;
-      }
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      // Mock Google login
+      createMockSession('user@gmail.com', 'Google User');
+      
+      toast.success('Signed in with Google successfully');
+      navigate('/learn');
     } catch (error) {
       toast.error('An error occurred during Google sign in');
       console.error('Google sign in error:', error);
@@ -120,15 +149,37 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const signInWithGithub = async () => {
+    try {
+      setLoading(true);
+      
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      // Mock GitHub login
+      createMockSession('user@github.com', 'GitHub User');
+      
+      toast.success('Signed in with GitHub successfully');
+      navigate('/learn');
+    } catch (error) {
+      toast.error('An error occurred during GitHub sign in');
+      console.error('GitHub sign in error:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const signOut = async () => {
     try {
       setLoading(true);
-      const { error } = await supabase.auth.signOut();
       
-      if (error) {
-        toast.error(error.message);
-        return;
-      }
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 500));
+      
+      // Clear auth state
+      setSession(null);
+      setUser(null);
+      localStorage.removeItem('session');
       
       toast.success('Signed out successfully');
       navigate('/');
@@ -141,7 +192,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   return (
-    <AuthContext.Provider value={{ session, user, loading, signIn, signUp, signOut, signInWithGoogle }}>
+    <AuthContext.Provider value={{ 
+      session, 
+      user, 
+      loading, 
+      signIn, 
+      signUp, 
+      signOut, 
+      signInWithGoogle,
+      signInWithGithub 
+    }}>
       {children}
     </AuthContext.Provider>
   );

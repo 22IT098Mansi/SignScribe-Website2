@@ -13,7 +13,7 @@ const SignIn: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const { signIn, signInWithGoogle, user, loading } = useAuth();
+  const { signIn, signInWithGoogle, signInWithGithub, user, loading } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -111,7 +111,7 @@ const SignIn: React.FC = () => {
                   type="button"
                   variant="outline"
                   className="w-full"
-                  onClick={signInWithGoogle} // Using the same function for simplicity
+                  onClick={signInWithGithub}
                   disabled={loading}
                 >
                   <svg className="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
