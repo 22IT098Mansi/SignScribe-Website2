@@ -14,56 +14,56 @@
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
 
-    --primary: 220 80% 50%;
+    --primary: 142 76% 36%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 6% 10%;
+    --secondary: 140 5% 96%;
+    --secondary-foreground: 142 6% 10%;
 
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46.1%;
+    --muted: 140 5% 96%;
+    --muted-foreground: 142 4% 46.1%;
 
-    --accent: 240 5% 96%;
-    --accent-foreground: 240 6% 10%;
+    --accent: 140 5% 96%;
+    --accent-foreground: 142 6% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 240 5% 65%;
+    --border: 142 6% 90%;
+    --input: 142 6% 90%;
+    --ring: 142 5% 65%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 142 10% 10%;
     --foreground: 0 0% 98%;
 
-    --card: 240 10% 3.9%;
+    --card: 142 10% 10%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 3.9%;
+    --popover: 142 10% 10%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 220 80% 50%;
+    --primary: 142 80% 40%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 240 4% 16%;
+    --secondary: 142 4% 16%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 4% 16%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 142 4% 16%;
+    --muted-foreground: 142 5% 65%;
 
-    --accent: 240 4% 16%;
+    --accent: 142 4% 16%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 4% 16%;
-    --input: 240 4% 16%;
-    --ring: 240 5% 65%;
+    --border: 142 4% 16%;
+    --input: 142 4% 16%;
+    --ring: 142 5% 65%;
   }
 }
 
@@ -79,17 +79,17 @@
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(240, 255, 240, 0.1);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
+  border: 1px solid rgba(144, 238, 144, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 135, 83, 0.05);
 }
 
 .glass-card-dark {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 64, 0, 0.2);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(144, 238, 144, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 64, 0, 0.15);
 }
 
 .page-transition {

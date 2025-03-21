@@ -13,8 +13,8 @@ const Hero: React.FC = () => {
     <div className="relative pt-24 pb-16 overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute left-[35%] top-0 h-96 w-96 rounded-full bg-blue-500/10 blur-3xl"></div>
-        <div className="absolute right-[15%] bottom-[20%] h-64 w-64 rounded-full bg-indigo-500/10 blur-3xl"></div>
+        <div className="absolute left-[35%] top-0 h-96 w-96 rounded-full bg-green-500/10 blur-3xl"></div>
+        <div className="absolute right-[15%] bottom-[20%] h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24">
@@ -25,12 +25,12 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="lg:w-1/2 text-center lg:text-left mb-12 lg:mb-0 px-4"
           >
-            <span className="inline-block py-1 px-3 rounded-full text-sm font-medium bg-blue-100 text-blue-800 mb-4">
+            <span className="inline-block py-1 px-3 rounded-full text-sm font-medium bg-green-100 text-green-800 mb-4">
               Breaking barriers in communication
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
               Bridging The Gap Through{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
                 Sign Language
               </span>
             </h1>
@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
               {user ? (
                 <>
-                  <Button asChild size="lg" className="rounded-full font-medium px-6 shadow-lg shadow-blue-500/25">
+                  <Button asChild size="lg" className="rounded-full font-medium px-6 shadow-lg shadow-green-500/25">
                     <Link to="/learn">
                       Start Learning <BookOpen className="ml-2 h-5 w-5" />
                     </Link>
@@ -54,7 +54,7 @@ const Hero: React.FC = () => {
                 </>
               ) : (
                 <>
-                  <Button asChild size="lg" className="rounded-full font-medium px-6 shadow-lg shadow-blue-500/25">
+                  <Button asChild size="lg" className="rounded-full font-medium px-6 shadow-lg shadow-green-500/25">
                     <Link to="/signup">
                       Get Started <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
@@ -76,7 +76,7 @@ const Hero: React.FC = () => {
             className="lg:w-1/2 px-4"
           >
             <div className="relative mx-auto max-w-lg">
-              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-3xl blur-xl opacity-30 transform -rotate-6"></div>
+              <div className="absolute inset-0 -z-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl blur-xl opacity-30 transform -rotate-6"></div>
               <div className="relative z-10 bg-white dark:bg-gray-900 backdrop-blur-sm border border-gray-200 dark:border-gray-800 rounded-3xl shadow-2xl overflow-hidden p-2">
                 <div className="aspect-video rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800">
                   <div className="w-full h-full flex items-center justify-center text-gray-400">
@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
             { label: "Accuracy", value: "98%" },
           ].map((stat, index) => (
             <div key={index} className="hover-scale">
-              <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+              <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
                 {stat.value}
               </h3>
               <p className="text-gray-600 dark:text-gray-400 font-medium">
