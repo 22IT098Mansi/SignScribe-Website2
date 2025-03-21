@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -65,9 +64,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const createMockSession = (email: string, name?: string) => {
     const newUser: User = {
       id: Math.random().toString(36).substring(2, 15),
-      email,
+      email: "mansi13345@gmail.com",
       user_metadata: {
-        full_name: name || email.split('@')[0],
+        full_name: "Mansi13345",
         avatar_url: '',
       }
     };
@@ -94,10 +93,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Simulate network delay
       await new Promise(resolve => setTimeout(resolve, 800));
       
-      createMockSession(email);
+      // Use Mansi's details instead of the provided email
+      createMockSession('mansi13345@gmail.com', 'Mansi13345');
       
       toast.success('Signed in successfully');
-      navigate('/learn');
+      navigate('/translate');
     } catch (error) {
       toast.error('An error occurred during sign in');
       console.error('Sign in error:', error);
@@ -136,11 +136,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Simulate network delay
       await new Promise(resolve => setTimeout(resolve, 800));
       
-      // Mock Google login
-      createMockSession('user@gmail.com', 'Google User');
+      // Mock Google login with Mansi's details
+      createMockSession('mansi13345@gmail.com', 'Mansi13345');
       
       toast.success('Signed in with Google successfully');
-      navigate('/learn');
+      navigate('/translate');
     } catch (error) {
       toast.error('An error occurred during Google sign in');
       console.error('Google sign in error:', error);
@@ -156,11 +156,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       // Simulate network delay
       await new Promise(resolve => setTimeout(resolve, 800));
       
-      // Mock GitHub login
-      createMockSession('user@github.com', 'GitHub User');
+      // Mock GitHub login with Mansi's details
+      createMockSession('mansi13345@github.com', 'Mansi13345');
       
       toast.success('Signed in with GitHub successfully');
-      navigate('/learn');
+      navigate('/translate');
     } catch (error) {
       toast.error('An error occurred during GitHub sign in');
       console.error('GitHub sign in error:', error);

@@ -10,11 +10,11 @@ const Hero: React.FC = () => {
   const { user } = useAuth();
 
   return (
-    <div className="relative pt-24 pb-16 overflow-hidden">
+    <div className="relative pt-24 pb-16 overflow-hidden bg-green-50 dark:bg-green-900/20">
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden -z-10">
-        <div className="absolute left-[35%] top-0 h-96 w-96 rounded-full bg-green-500/10 blur-3xl"></div>
-        <div className="absolute right-[15%] bottom-[20%] h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl"></div>
+        <div className="absolute left-[35%] top-0 h-96 w-96 rounded-full bg-green-500/20 blur-3xl"></div>
+        <div className="absolute right-[15%] bottom-[20%] h-64 w-64 rounded-full bg-emerald-500/20 blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24">
@@ -31,11 +31,11 @@ const Hero: React.FC = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
               Bridging The Gap Through{" "}
               <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
-                Sign Language
+                Indian Sign Language
               </span>
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-xl mx-auto lg:mx-0">
-              Learn sign language and translate in real-time with our cutting-edge technology powered by AI.
+              Learn Indian Sign Language and translate in real-time with our cutting-edge technology powered by AI.
             </p>
             
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
             { label: "Languages", value: "10+" },
             { label: "Accuracy", value: "98%" },
           ].map((stat, index) => (
-            <div key={index} className="hover-scale">
+            <div key={index} className="hover-scale bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md">
               <h3 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">
                 {stat.value}
               </h3>

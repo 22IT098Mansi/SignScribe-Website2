@@ -3,8 +3,9 @@ import React from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Video } from '@/lib/supabase';
-import { Play, Clock } from 'lucide-react';
+import { Play, Clock, CheckCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { toast } from 'sonner';
 
 interface VideoCardProps {
   video: Video;
@@ -16,6 +17,11 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+  };
+
+  const handlePractice = () => {
+    window.open(video.url, '_blank');
+    toast.success('Opening practice video');
   };
 
   return (
@@ -36,7 +42,12 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
               loading="lazy"
             />
             <div className="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-              <Button variant="default" size="icon" className="rounded-full bg-white/90 text-black hover:bg-white">
+              <Button 
+                variant="default" 
+                size="icon" 
+                className="rounded-full bg-white/90 text-black hover:bg-white"
+                onClick={handlePractice}
+              >
                 <Play className="h-5 w-5" />
               </Button>
             </div>
@@ -44,9 +55,14 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
               <Clock className="h-3 w-3 mr-1" />
               {formatDuration(video.duration)}
             </div>
-            <div className="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md">
+            <div className="absolute top-2 left-2 bg-green-500 text-white text-xs px-2 py-1 rounded-md">
               {video.level}
             </div>
+            {video.completed && (
+              <div className="absolute top-2 right-2">
+                <CheckCircle className="h-5 w-5 text-green-500 fill-white" />
+              </div>
+            )}
           </div>
         </div>
 
@@ -59,8 +75,8 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
         </CardContent>
 
         <CardFooter className="p-4 pt-0 mt-auto">
-          <Button className="w-full" variant="outline">
-            Watch Now
+          <Button className="w-full" onClick={handlePractice}>
+            Practice Now
           </Button>
         </CardFooter>
       </Card>

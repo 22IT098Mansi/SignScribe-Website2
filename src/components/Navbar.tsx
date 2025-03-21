@@ -32,9 +32,11 @@ const Navbar: React.FC = () => {
   const navLinks = user ? [
     { name: 'Learn', path: '/learn' },
     { name: 'Translate', path: '/translate' },
+    { name: 'About', path: '/about' },
     { name: 'Profile', path: '/profile' },
   ] : [
     { name: 'Home', path: '/' },
+    { name: 'About', path: '/about' },
     { name: 'Sign In', path: '/signin' },
     { name: 'Sign Up', path: '/signup' },
   ];
@@ -50,7 +52,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex-shrink-0">
               <span className="text-2xl font-bold bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
-                SignScribe
+                ISL Translator
               </span>
             </Link>
           </div>

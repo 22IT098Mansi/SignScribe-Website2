@@ -63,7 +63,7 @@ const Profile: React.FC = () => {
                 <div className="mx-auto mb-4 relative">
                   <Avatar className="w-24 h-24 mx-auto">
                     <AvatarImage src={user.user_metadata?.avatar_url || ''} alt={user.user_metadata?.full_name || user.email || ''} />
-                    <AvatarFallback className="text-2xl">
+                    <AvatarFallback className="text-2xl bg-green-100 text-green-800">
                       {getInitials(profileName || user.email?.split('@')[0] || 'User')}
                     </AvatarFallback>
                   </Avatar>
@@ -78,17 +78,17 @@ const Profile: React.FC = () => {
                 <div className="space-y-4">
                   <div className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-lg flex justify-between">
                     <div className="flex items-center">
-                      <BookOpen className="h-5 w-5 text-blue-500 mr-2" />
+                      <BookOpen className="h-5 w-5 text-green-500 mr-2" />
                       <span>Learning streak</span>
                     </div>
                     <span className="font-semibold">3 days</span>
                   </div>
                   <div className="bg-gray-50 dark:bg-gray-900/50 p-3 rounded-lg flex justify-between">
                     <div className="flex items-center">
-                      <Award className="h-5 w-5 text-blue-500 mr-2" />
+                      <Award className="h-5 w-5 text-green-500 mr-2" />
                       <span>Completed lessons</span>
                     </div>
-                    <span className="font-semibold">12</span>
+                    <span className="font-semibold">2</span>
                   </div>
                   <Button variant="destructive" className="w-full" onClick={signOut}>
                     Sign Out
@@ -162,7 +162,7 @@ const Profile: React.FC = () => {
                     <CardHeader>
                       <CardTitle>Learning Progress</CardTitle>
                       <CardDescription>
-                        Track your sign language learning journey
+                        Track your Indian Sign Language learning journey
                       </CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -173,7 +173,7 @@ const Profile: React.FC = () => {
                             <span className="text-sm font-medium">75%</span>
                           </div>
                           <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-                            <div className="h-full bg-blue-500 rounded-full" style={{ width: "75%" }}></div>
+                            <div className="h-full bg-green-500 rounded-full" style={{ width: "75%" }}></div>
                           </div>
                         </div>
                         <div>
@@ -182,7 +182,7 @@ const Profile: React.FC = () => {
                             <span className="text-sm font-medium">90%</span>
                           </div>
                           <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-                            <div className="h-full bg-blue-500 rounded-full" style={{ width: "90%" }}></div>
+                            <div className="h-full bg-green-500 rounded-full" style={{ width: "90%" }}></div>
                           </div>
                         </div>
                         <div>
@@ -191,7 +191,7 @@ const Profile: React.FC = () => {
                             <span className="text-sm font-medium">40%</span>
                           </div>
                           <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-                            <div className="h-full bg-blue-500 rounded-full" style={{ width: "40%" }}></div>
+                            <div className="h-full bg-green-500 rounded-full" style={{ width: "40%" }}></div>
                           </div>
                         </div>
                         <div>
@@ -200,7 +200,7 @@ const Profile: React.FC = () => {
                             <span className="text-sm font-medium">10%</span>
                           </div>
                           <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-                            <div className="h-full bg-blue-500 rounded-full" style={{ width: "10%" }}></div>
+                            <div className="h-full bg-green-500 rounded-full" style={{ width: "10%" }}></div>
                           </div>
                         </div>
                       </div>
@@ -229,7 +229,7 @@ const Profile: React.FC = () => {
                               aria-describedby="email-notifications-description"
                               name="email-notifications"
                               type="checkbox"
-                              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                              className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500"
                               defaultChecked
                             />
                           </div>
@@ -245,7 +245,7 @@ const Profile: React.FC = () => {
                               aria-describedby="learning-reminders-description"
                               name="learning-reminders"
                               type="checkbox"
-                              className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                              className="h-4 w-4 rounded border-gray-300 text-green-600 focus:ring-green-500"
                               defaultChecked
                             />
                           </div>
@@ -255,7 +255,7 @@ const Profile: React.FC = () => {
                             <h3 className="font-medium">Two-factor authentication</h3>
                             <p className="text-sm text-gray-500">Add an extra layer of security to your account</p>
                           </div>
-                          <Button variant="outline" size="sm">
+                          <Button variant="outline" size="sm" className="text-green-600 border-green-600 hover:bg-green-50 dark:hover:bg-green-900/20">
                             Enable
                           </Button>
                         </div>

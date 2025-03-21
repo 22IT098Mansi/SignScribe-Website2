@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 
 const Index: React.FC = () => {
   return (
-    <div className="min-h-screen flex flex-col page-transition">
+    <div className="min-h-screen flex flex-col bg-green-50 dark:bg-green-900/10 page-transition">
       <Navbar />
       
       <main className="flex-grow">
@@ -18,7 +18,7 @@ const Index: React.FC = () => {
         <Features />
         
         {/* Testimonials section */}
-        <section className="py-20">
+        <section className="py-20 bg-white dark:bg-gray-900">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <motion.h2 
@@ -37,25 +37,25 @@ const Index: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="text-lg text-gray-600 dark:text-gray-300"
               >
-                Discover how SignScribe is making a difference in people's lives around the world.
+                Discover how ISL Translator is making a difference in people's lives around India.
               </motion.p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {[
                 {
-                  quote: "SignScribe has transformed how I communicate with my deaf students. The translation feature is incredibly accurate.",
-                  author: "Dr. Sarah Johnson",
+                  quote: "ISL Translator has transformed how I communicate with my deaf students. The translation feature is incredibly accurate.",
+                  author: "Dr. Priya Sharma",
                   role: "Professor of Linguistics"
                 },
                 {
-                  quote: "Learning sign language was always on my bucket list, but I never found the right platform until SignScribe. The tutorials are engaging and easy to follow.",
-                  author: "Mark Williams",
+                  quote: "Learning Indian Sign Language was always on my bucket list, but I never found the right platform until ISL Translator. The tutorials are engaging and easy to follow.",
+                  author: "Rajesh Patel",
                   role: "Software Engineer"
                 },
                 {
-                  quote: "As someone who was born deaf, I appreciate how SignScribe is making sign language more accessible to everyone.",
-                  author: "Emily Chen",
+                  quote: "As someone who was born deaf, I appreciate how ISL Translator is making sign language more accessible to everyone.",
+                  author: "Ananya Desai",
                   role: "Disability Rights Advocate"
                 }
               ].map((testimonial, index) => (
@@ -65,7 +65,7 @@ const Index: React.FC = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg"
+                  className="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl shadow-lg"
                 >
                   <div className="flex flex-col h-full">
                     <div className="mb-4 text-yellow-500">
@@ -86,7 +86,7 @@ const Index: React.FC = () => {
         </section>
         
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+        <section className="py-20 bg-gradient-to-r from-green-600 to-emerald-600 text-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <motion.h2 
@@ -96,16 +96,16 @@ const Index: React.FC = () => {
                 transition={{ duration: 0.6 }}
                 className="text-3xl md:text-4xl font-bold mb-6"
               >
-                Start Your Sign Language Journey Today
+                Start Your Indian Sign Language Journey Today
               </motion.h2>
               <motion.p 
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-xl mb-10 text-blue-100"
+                className="text-xl mb-10 text-green-100"
               >
-                Join thousands of users already learning and communicating with SignScribe.
+                Join thousands of users already learning and communicating with ISL Translator.
               </motion.p>
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -114,7 +114,7 @@ const Index: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="flex flex-col sm:flex-row gap-4 justify-center"
               >
-                <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-blue-50">
+                <Button asChild size="lg" className="bg-white text-green-600 hover:bg-green-50">
                   <Link to="/signup">
                     Get Started <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
@@ -134,8 +134,8 @@ const Index: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <h3 className="text-2xl font-bold mb-4">SignScribe</h3>
-              <p className="text-gray-400 mb-4">Breaking barriers in communication through innovative sign language technology.</p>
+              <h3 className="text-2xl font-bold mb-4">ISL Translator</h3>
+              <p className="text-gray-400 mb-4">Breaking barriers in communication through innovative Indian sign language technology.</p>
               <div className="flex space-x-4">
                 <a href="#" className="text-gray-400 hover:text-white">
                   <Twitter className="h-5 w-5" />
@@ -174,7 +174,7 @@ const Index: React.FC = () => {
             ))}
           </div>
           <div className="border-t border-gray-800 mt-12 pt-8 text-sm text-gray-400 text-center">
-            <p>© {new Date().getFullYear()} SignScribe. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} ISL Translator. All rights reserved.</p>
           </div>
         </div>
       </footer>
