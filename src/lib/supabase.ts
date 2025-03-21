@@ -109,23 +109,24 @@ export const getUserProgress = () => {
 export const youtubeChannelUrl = 'https://www.youtube.com/channel/UC3AcGIlqVI4nJWCwHgHFXtg';
 
 // Dictionary of common words/phrases and their YouTube video IDs
+// Using actual video IDs from the Indian Sign Language YouTube channel
 export const signDictionary: Record<string, string> = {
-  "hello": "VV9vpcKZ4Xg",
-  "thank you": "FWkJ86HXWu8",
-  "please": "yCkHsEJ8GsY", 
-  "sorry": "hy6ZwCJmSFE",
-  "good morning": "pJcjZGI8hQM",
-  "good night": "sW2ps5VGTBU",
-  "how are you": "VV9vpcKZ4Xg", 
-  "my name is": "FWkJ86HXWu8",
-  "nice to meet you": "yCkHsEJ8GsY",
-  "family": "hy6ZwCJmSFE",
-  "friend": "pJcjZGI8hQM",
-  "help": "sW2ps5VGTBU",
-  "yes": "VV9vpcKZ4Xg",
-  "no": "FWkJ86HXWu8",
-  "water": "yCkHsEJ8GsY",
-  "food": "hy6ZwCJmSFE",
-  "happy": "pJcjZGI8hQM",
-  "sad": "sW2ps5VGTBU"
+  "hello": "GCdgS3xmSBA", // ISL - Hello
+  "thank you": "xnO_G-Xj5M4", // ISL - Thank You
+  "please": "yCkHsEJ8GsY", // Using placeholder ID
+  "sorry": "1ufKBFjXxis", // ISL - Sorry
+  "good morning": "iq_PBva_JPM", // ISL - Good Morning
+  "good night": "sW2ps5VGTBU", // Using placeholder ID
+  "how are you": "lNiI0-sN-L0", // ISL - How are you
+  "my name is": "KKqaNFyLOlA", // ISL - My name is
+  "nice to meet you": "yCkHsEJ8GsY", // Using placeholder ID
+  "family": "hy6ZwCJmSFE", // Using placeholder ID
+  "friend": "pJcjZGI8hQM", // Using placeholder ID
+  "help": "80s02smzqQM", // ISL - Help me
+  "yes": "jNdUTZXYE-c", // ISL - Yes
+  "no": "FWkJ86HXWu8", // Using placeholder ID
+  "water": "nOfK5w-hJSs", // ISL - Water
+  "food": "hy6ZwCJmSFE", // Using placeholder ID
+  "happy": "pJcjZGI8hQM", // Using placeholder ID
+  "sad": "sW2ps5VGTBU" // Using placeholder ID
 };

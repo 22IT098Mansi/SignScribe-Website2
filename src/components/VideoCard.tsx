@@ -20,7 +20,27 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
   };
 
   const handlePractice = () => {
-    window.open(video.url, '_blank');
+    // Extract YouTube video ID from URL if it's a YouTube URL
+    const url = new URL(video.url);
+    if (url.hostname.includes('youtube.com') || url.hostname.includes('youtu.be')) {
+      let videoId;
+      if (url.hostname.includes('youtube.com')) {
+        videoId = new URLSearchParams(url.search).get('v');
+      } else {
+        // youtu.be format
+        videoId = url.pathname.slice(1);
+      }
+      
+      if (videoId) {
+        const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        window.open(embedUrl, '_blank');
+      } else {
+        window.open(video.url, '_blank');
+      }
+    } else {
+      window.open(video.url, '_blank');
+    }
+    
     toast.success('Opening practice video');
   };
 

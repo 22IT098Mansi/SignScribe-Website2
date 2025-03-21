@@ -46,9 +46,15 @@ const Translate: React.FC = () => {
       toast.info('Camera turned off');
     } else {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({ 
+          video: { 
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
+          } 
+        });
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
+          videoRef.current.play().catch(err => console.error("Error playing video:", err));
         }
         setCameraActive(true);
         toast.success('Camera activated');
@@ -79,13 +85,13 @@ const Translate: React.FC = () => {
     
     // Check if the input text (case insensitive) matches any entry in our dictionary
     const lowercaseInput = textInput.toLowerCase().trim();
-    const videoId = signDictionary[lowercaseInput];
+    const matchedVideoId = signDictionary[lowercaseInput];
     
     // Simulate translation process
     setTimeout(() => {
       setIsTranslating(false);
-      if (videoId) {
-        setVideoId(videoId);
+      if (matchedVideoId) {
+        setVideoId(matchedVideoId);
         setShowVideoEmbed(true);
         toast.success('Translation found!');
       } else {
@@ -153,9 +159,10 @@ const Translate: React.FC = () => {
                           <video
                             ref={videoRef}
                             autoPlay
-                            muted
                             playsInline
+                            muted
                             className="absolute inset-0 w-full h-full object-cover"
+                            style={{ transform: 'scaleX(-1)' }} // Mirror effect for better user experience
                           />
                         ) : (
                           <div className="text-center p-4 flex flex-col items-center text-gray-500 dark:text-gray-400">
@@ -270,15 +277,15 @@ const Translate: React.FC = () => {
                             <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-green-500 mb-2"></div>
                             <p>Generating sign language...</p>
                           </div>
-                        ) : showVideoEmbed ? (
+                        ) : showVideoEmbed && videoId ? (
                           <iframe
                             width="100%"
                             height="100%"
-                            src={`https://www.youtube.com/embed/${videoId}`}
+                            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
                             title="YouTube video player"
-                            frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
+                            className="absolute inset-0"
                           ></iframe>
                         ) : (
                           <div className="text-center p-4 flex flex-col items-center text-gray-500 dark:text-gray-400">
